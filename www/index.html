@@ -20,7 +20,7 @@
 
         <section id="entrar"> 
             <figure>
-                <a href="levels.html" class="shake" id="t">
+                <a href="levels.html" class="shake">
                     <img src="./img/boton-normal.png" alt="" />
                 </a>
             </figure>
@@ -43,43 +43,6 @@
         <!--PhoneGap-->
         <script type="text/javascript">
             app.initialize();
-            
-            // PhoneGap esta lista
-    //
-    function onDeviceReady() {
-        window.requestFileSystem(LocalFileSystem.PERSISTENT, 2, gotFS, fail);
-    }
-
-    $(document).ready(function() {
-    var el = document.getElementById("t");   
-        el.addEventListener("click", onDeviceReady, false);  
-    });
-
-    function gotFS(fileSystem) {
-        fileSystem.root.getFile("leeme.txt", {create: true}, gotFileEntry, fail); 
-    }
-
-    function gotFileEntry(fileEntry) {
-        fileEntry.createWriter(gotFileWriter, fail);
-    }
-
-    function gotFileWriter(writer) {
-        writer.onwrite = function(evt) {
-            console.log("Se escribió satisfactoriamente");
-        };
-        writer.write("some sample text");
-        // El contenido del fichero ahora es 'some sample text'
-        writer.truncate(11);
-        // El contenido del fichero ahora es 'some sample'
-        writer.seek(4);
-        // El contenido del fichero aun es 'some sample' pero el puntero apunta después del carácter 'e' de 'some'
-        writer.write(" different text");
-        // El contenido del fichero ahora es 'some different text'
-    }
-
-    function fail(error) {
-        console.log(error.code);
-    }
         </script>
         <!--/PhoneGap-->
     </body>
